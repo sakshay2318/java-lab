@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class Employee {
+    int id;
+    String name;
+    String department;
+    String designation;
+    double salary;
+
+    public Employee(int id, String name, String department, String designation, double salary) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+        this.designation = designation;
+        this.salary = salary;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Employee[] employees = new Employee[3];
+
+        for (int i = 0; i < employees.length; i++) {
+            System.out.println("Enter details for Employee " + (i + 1) + ":");
+            System.out.print("ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Department: ");
+            String department = scanner.nextLine();
+            System.out.print("Designation: ");
+            String designation = scanner.nextLine();
+            System.out.print("Salary: ");
+            double salary = scanner.nextDouble();
+            scanner.nextLine(); // Consume the newline character
+
+            employees[i] = new Employee(id, name, department, designation, salary);
+            
+        }
+
+        // Display employee information
+        System.out.println("\nEmployee Information:");
+        for (Employee employee : employees) {
+            System.out.println("ID: " + employee.id);
+            System.out.println("Name: " + employee.name);
+            System.out.println("Department: " + employee.department);
+            System.out.println("Designation: " + employee.designation);
+            System.out.println("Salary: " + employee.salary);
+            System.out.println();
+        }
+
+        // Calculate combined salary of employees in the Sales department
+        double salesDepartmentSalary = 0;
+        double highestPurchaseManagerSalary = 0;
+
+        for (Employee employee : employees) {
+            if (employee.department.equalsIgnoreCase("Sales")) {
+                salesDepartmentSalary += employee.salary;
+            }
+            if (employee.department.equalsIgnoreCase("Purchase") && employee.designation.equalsIgnoreCase("Manager")) {
+                if (employee.salary > highestPurchaseManagerSalary) {
+                    highestPurchaseManagerSalary = employee.salary;
+                }
+            }
+        }
+
+        System.out.println("Combined Salary of Sales Department: " + salesDepartmentSalary);
+
+        if (highestPurchaseManagerSalary > 0) {
+            System.out.println("Highest Paid Manager in the Purchase Department: " + highestPurchaseManagerSalary);
+        } else {
+            System.out.println("No manager found in the Purchase Department.");
+        }
+    }
+}
