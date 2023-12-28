@@ -1,0 +1,65 @@
+import java.util.Scanner;
+class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the 2 complex numbers");
+        int i = sc.nextInt();
+        int j = sc.nextInt();
+        int k = sc.nextInt();
+        int l = sc.nextInt();
+        complex obj1 = new complex(i,j,k,l);
+        obj1.addcomplex();
+        complex obj2 = new complex(i,j,k,l);
+        obj2.subcomplex();
+        complex obj3 = new complex(i,j);
+        obj3.inccomplex();
+        complex obj4 = new complex(i,j);
+        obj4.deccomplex();
+        complex obj5 = new complex(i,j,k,l);
+        obj5.comcomplex();
+    }
+}
+class complex{
+        public int real1;
+        public int img1;
+        public int real2;
+        public int img2;
+    public complex(int x,int y,int z,int q){
+        real1 = x ;
+        img1 = y;
+        real2 = z ;
+        img2 = q;
+    }
+        public complex(int x,int y){
+        real1 = x ;
+        img1 = y;
+    }
+    public void addcomplex(){
+        int c1 =real1+real2;
+        int c2 =img1+img2;
+        System.out.println("the addition of 2 complex number is "+c1+"+i"+c2);
+    }
+    public void subcomplex(){
+        int c1 =real1-real2;
+        int c2 = img1-img2;
+        System.out.println("the substraction of 2 complex number is "+c1+"+i"+c2);
+    }
+    public void inccomplex(){
+        int i1 = real1 +1;
+        int i2 = img1 +1;
+        System.out.println(" the imcrement of complex number is "+i1+"+i"+i2);
+    }
+    public void deccomplex(){
+        int d1 = real1 -1;
+        int d2 = img1 -1;
+        System.out.println(" the imcrement of complex number is "+d1+"+i"+d2);
+    }
+    public void comcomplex(){
+        if(real1==real2 && img1==img2){
+            System.out.println("the 2 complex numbers are same");
+        }
+        else{
+            System.out.println("the 2 complex numbers are different");
+        }
+    }
+}
