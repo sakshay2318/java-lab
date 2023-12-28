@@ -1,0 +1,46 @@
+import java.util.*;
+interface compute {
+  public void convert();
+}
+class ByteToKilo implements compute {
+  int bytes;
+  public ByteToKilo(int b) {
+    bytes = b;
+  }
+ 
+  public void convert() {
+    double kilobytes = bytes / 1024.0;
+    System.out.println(bytes + " bytes = " + kilobytes + " kilobytes");
+  }
+}
+class EuroToRupee implements compute {
+  double euros;
+  public EuroToRupee(double e) {
+    euros = e;
+  }
+ 
+  public void convert() {
+    double rate = 89.95;
+    double rupees = euros * rate;
+    System.out.println(euros + " euros = " + rupees + " rupees");
+  }
+}
+
+
+
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the number of bytes");
+    int b=sc.nextInt();
+    ByteToKilo btk = new ByteToKilo(b);
+    btk.convert();
+    System.out.println("Enter the number of euros");
+    double e=sc.nextDouble();
+    EuroToRupee etr = new EuroToRupee(e);
+    etr.convert();
+    sc.close();
+  }
+}
+
